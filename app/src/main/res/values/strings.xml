@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">EduCards</string>
+    <string name="answer1">Barack Obama</string>
+    <string name="question1">Who is the 44th President of the United States?</string>
+    <string name="option1">Bill Clinton</string>
+    <string name="option2">George H. W. Bush</string>
 </resources>
