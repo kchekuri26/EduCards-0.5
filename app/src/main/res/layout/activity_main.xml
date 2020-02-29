@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="25dp"
+        android:layout_margin="20dp"
         android:background="@drawable/question_background"
         android:elevation="5dp"
         android:padding="15dp"
@@ -30,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="25dp"
+        android:layout_margin="20dp"
         android:background="@drawable/answer_background"
         android:elevation="5dp"
         android:padding="50dp"
@@ -44,7 +46,9 @@
         android:id="@+id/option_one"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="300dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/option_background"
         android:text="@string/option1"
         android:textAlignment="center"
@@ -56,7 +60,9 @@
         android:id="@+id/option_two"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="375dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/option_background"
         android:text="@string/option2"
         android:textAlignment="center"
@@ -68,7 +74,9 @@
         android:id="@+id/option_three"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="450dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/option_background"
         android:text="@string/answer1"
         android:textAlignment="center"
@@ -92,4 +100,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="550dp"
         app:srcCompat="@drawable/ic_iconmonstr_eye_5" />
+
+    <ImageView
+        android:id="@+id/addNewCard"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="550dp"
+        android:translationX="350dp"
+        app:srcCompat="@drawable/ic_iconmonstr_plus_6" />
 </RelativeLayout>
