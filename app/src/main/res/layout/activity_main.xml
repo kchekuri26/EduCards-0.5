@@ -86,26 +86,34 @@
 
     <ImageView
         android:id="@+id/hideOptions"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="525dp"
         android:visibility="invisible"
         app:srcCompat="@drawable/ic_iconmonstr_eye_8" />
 
     <ImageView
         android:id="@+id/showOptions"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="525dp"
         app:srcCompat="@drawable/ic_iconmonstr_eye_5" />
 
     <ImageView
         android:id="@+id/addNewCard"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="530dp"
         android:translationX="350dp"
         app:srcCompat="@drawable/ic_iconmonstr_plus_6" />
+
+    <ImageView
+        android:id="@+id/editCard"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="530dp"
+        android:translationX="15dp"
+        app:srcCompat="@drawable/ic_iconmonstr_edit_11" />
 </RelativeLayout>
