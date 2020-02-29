@@ -2,6 +2,7 @@
 
 ### App Description
 User Interface for CodePath Lab 2.
+
 <b>User tip:</b> To reset the card, click anywhere on the background.
 
 ### App Walk-though
