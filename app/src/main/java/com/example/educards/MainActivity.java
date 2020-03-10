@@ -9,7 +9,13 @@ import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    FlashcardDatabase flashcardDatabase;
+    List<Flashcard> allFlashcards;
+    int currentCardDisplayedIndex = 0;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -19,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
                 String answer = data.getExtras().getString("string2");
                 String wrongOption1 = data.getExtras().getString("string3");
                 String wrongOption2 = data.getExtras().getString("string4");
+
+                flashcardDatabase.insertCard(new Flashcard(question, answer, wrongOption1, wrongOption2));
+                allFlashcards = flashcardDatabase.getAllCards();
 
                 ((TextView) findViewById(R.id.flashcard_question)).setText(question);
                 ((TextView) findViewById(R.id.flashcard_answer)).setText(answer);
@@ -36,8 +45,20 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        flashcardDatabase = new FlashcardDatabase(getApplicationContext());
+        allFlashcards = flashcardDatabase.getAllCards();
+
+        if (allFlashcards != null && allFlashcards.size() > 0) {
+            ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(0).getQuestion());
+            ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(0).getAnswer());
+            ((TextView) findViewById(R.id.option_one)).setText(allFlashcards.get(0).getWrongAnswer1());
+            ((TextView) findViewById(R.id.option_two)).setText(allFlashcards.get(0).getWrongAnswer2());
+            ((TextView) findViewById(R.id.option_three)).setText(allFlashcards.get(0).getAnswer());
+        }
 
         //Shows the answer on the back of the card when clicked on the question.
         findViewById(R.id.flashcard_question).setOnClickListener(new View.OnClickListener() {
@@ -133,6 +154,26 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("stringKey3", ((TextView) findViewById(R.id.option_one)).getText());
                 intent.putExtra("stringKey4", ((TextView) findViewById(R.id.option_two)).getText());
                 MainActivity.this.startActivityForResult(intent, 100);
+            }
+        });
+
+        findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // advance our pointer index so we can show the next card
+                currentCardDisplayedIndex++;
+
+                // make sure we don't get an IndexOutOfBoundsError if we are viewing the last indexed card in our list
+                if (currentCardDisplayedIndex > allFlashcards.size() - 1) {
+                    currentCardDisplayedIndex = 0;
+                }
+
+                findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
+                findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
+
+                // set the question and answer TextViews with data from the database
+                ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
+                ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
             }
         });
 

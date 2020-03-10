@@ -116,4 +116,21 @@
         android:layout_marginTop="530dp"
         android:translationX="15dp"
         app:srcCompat="@drawable/ic_iconmonstr_edit_11" />
+
+    <ImageView
+        android:id="@+id/next"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="false"
+        android:layout_marginTop="235dp"
+        android:translationX="300dp"
+        app:srcCompat="@drawable/ic_iconmonstr_arrow_28" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="235dp"
+        android:translationX="65dp"
+        app:srcCompat="@drawable/ic_iconmonstr_trash_can_2" />
 </RelativeLayout>
