@@ -127,7 +127,7 @@
         app:srcCompat="@drawable/ic_iconmonstr_arrow_28" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/delete"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="235dp"

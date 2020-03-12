@@ -10,12 +10,20 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     FlashcardDatabase flashcardDatabase;
     List<Flashcard> allFlashcards;
     int currentCardDisplayedIndex = 0;
+
+    // returns a random number between minNumber and maxNumber, inclusive.
+    // for example, if i called getRandomNumber(1, 3), there's an equal chance of it returning either 1, 2, or 3.
+    public int getRandomNumber(int minNumber, int maxNumber) {
+        Random rand = new Random();
+        return rand.nextInt((maxNumber - minNumber) + 1) + minNumber;
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -171,19 +179,56 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
                 findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
 
-                // set the question and answer TextViews with data from the database
-                ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
-                ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                if (allFlashcards.size()!=0){
+                    // set the question and answer TextViews with data from the database
+                    ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
+                    ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                    ((TextView) findViewById(R.id.option_one)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer1());
+                    ((TextView) findViewById(R.id.option_two)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer2());
+                    ((TextView) findViewById(R.id.option_three)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                } else {
+                    ((TextView) findViewById(R.id.flashcard_question)).setText(R.string.question1);
+                    ((TextView) findViewById(R.id.flashcard_answer)).setText(R.string.answer1);
+                    ((TextView) findViewById(R.id.option_one)).setText(R.string.option1);
+                    ((TextView) findViewById(R.id.option_two)).setText(R.string.option2);
+                    ((TextView) findViewById(R.id.option_three)).setText(R.string.answer1);
+                }
+
+
             }
         });
 
+        findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flashcardDatabase.deleteCard(((TextView) findViewById(R.id.flashcard_question)).getText().toString());
+                allFlashcards = flashcardDatabase.getAllCards();
 
+                if (allFlashcards.size()!=0){
+                    currentCardDisplayedIndex--;
 
-
-
-
-
-
+                    if (currentCardDisplayedIndex>=0){
+                        ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
+                        ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                        ((TextView) findViewById(R.id.option_one)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer1());
+                        ((TextView) findViewById(R.id.option_two)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer2());
+                        ((TextView) findViewById(R.id.option_three)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                    } else {
+                        ((TextView) findViewById(R.id.flashcard_question)).setText(R.string.question1);
+                        ((TextView) findViewById(R.id.flashcard_answer)).setText(R.string.answer1);
+                        ((TextView) findViewById(R.id.option_one)).setText(R.string.option1);
+                        ((TextView) findViewById(R.id.option_two)).setText(R.string.option2);
+                        ((TextView) findViewById(R.id.option_three)).setText(R.string.answer1);
+                    }
+                } else {
+                    ((TextView) findViewById(R.id.flashcard_question)).setText(R.string.question1);
+                    ((TextView) findViewById(R.id.flashcard_answer)).setText(R.string.answer1);
+                    ((TextView) findViewById(R.id.option_one)).setText(R.string.option1);
+                    ((TextView) findViewById(R.id.option_two)).setText(R.string.option2);
+                    ((TextView) findViewById(R.id.option_three)).setText(R.string.answer1);
+                }
+            }
+        });
 
 
 
