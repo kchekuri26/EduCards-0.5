@@ -196,7 +196,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // advance our pointer index so we can show the next card
-                currentCardDisplayedIndex = getRandomNumber(0, allFlashcards.size()-1);
+                if (allFlashcards.size()-1>=0){
+                    currentCardDisplayedIndex = getRandomNumber(0, allFlashcards.size()-1);
+                }
 
                 // make sure we don't get an IndexOutOfBoundsError if we are viewing the last indexed card in our list
                 if (currentCardDisplayedIndex > allFlashcards.size() - 1) {
@@ -240,12 +242,6 @@ public class MainActivity extends AppCompatActivity {
                         ((TextView) findViewById(R.id.option_one)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer1());
                         ((TextView) findViewById(R.id.option_two)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer2());
                         ((TextView) findViewById(R.id.option_three)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
-                    } else {
-                        ((TextView) findViewById(R.id.flashcard_question)).setText(R.string.question1);
-                        ((TextView) findViewById(R.id.flashcard_answer)).setText(R.string.answer1);
-                        ((TextView) findViewById(R.id.option_one)).setText(R.string.option1);
-                        ((TextView) findViewById(R.id.option_two)).setText(R.string.option2);
-                        ((TextView) findViewById(R.id.option_three)).setText(R.string.answer1);
                     }
                 } else {
                     ((TextView) findViewById(R.id.flashcard_question)).setText(R.string.question1);
