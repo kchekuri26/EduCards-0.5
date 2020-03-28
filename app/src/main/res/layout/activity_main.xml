@@ -140,7 +140,7 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="235dp"
-        android:text=""
+        android:text="0"
         android:textSize="36sp"
         android:textStyle="bold" />
 </RelativeLayout>
