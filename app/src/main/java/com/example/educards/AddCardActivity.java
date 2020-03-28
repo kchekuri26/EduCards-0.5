@@ -27,7 +27,6 @@ public class AddCardActivity extends AppCompatActivity {
         findViewById(R.id.exitNewCard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 finish();
             }
         });
