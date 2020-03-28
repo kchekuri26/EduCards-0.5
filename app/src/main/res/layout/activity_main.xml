@@ -133,4 +133,14 @@
         android:layout_marginTop="235dp"
         android:translationX="65dp"
         app:srcCompat="@drawable/ic_iconmonstr_trash_can_2" />
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="235dp"
+        android:text=""
+        android:textSize="36sp"
+        android:textStyle="bold" />
 </RelativeLayout>

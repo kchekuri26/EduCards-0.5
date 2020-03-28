@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.Animation;
@@ -21,6 +22,13 @@ public class MainActivity extends AppCompatActivity {
     FlashcardDatabase flashcardDatabase;
     List<Flashcard> allFlashcards;
     int currentCardDisplayedIndex = 0;
+    CountDownTimer countDownTimer;
+
+
+    private void startTimer() {
+        countDownTimer.cancel();
+        countDownTimer.start();
+    }
 
 
     // returns a random number between minNumber and maxNumber, inclusive.
@@ -85,6 +93,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        countDownTimer = new CountDownTimer(16000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                ((TextView) findViewById(R.id.timer)).setText("" + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+            }
+        };
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -269,6 +286,7 @@ public class MainActivity extends AppCompatActivity {
                         // we don't need to worry about this method
                     }
                 });
+                countDownTimer.start();
 
 
 
