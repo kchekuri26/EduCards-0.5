@@ -1,20 +1,9 @@
-## Lab 4
+## eduCards
 
 ### App Description
-CodePath Lab #4
+Basic flashcard app where the user can create/edit/delete, store and review their own flashcards. The app displays flashcards in a random order to help aid the memorization of the user. Moreover, this app has cool animations to mimic the real flash cards. Furthermore, the app also allows the user to choose whether or not to display multiple options for the answer. In addition to all this, the app also has a contdown timer for 15 seconds on each flashcard. Please refer to the app walk-through below.  
 
 <b>User tip:</b> To reset the card, click anywhere on the background.
 
 ### App Walk-though
 <img src="https://github.com/kchekuri26/EduCards-0.4/blob/master/Demo.gif" width=200><br>
-
-## Required
-- [x] User sees a transition animation when going from the main screen to the add card screen.
-- [x] User sees a reveal animation when the flashcard is tapped and the answer is shown
-- [x] User sees flashcards animating in / out when the 'next' button is tapped
-
-## Optional
-- [x] Extra styling is added!
-- [x] User sees a countdown timer for each question
-- [x] User sees a 'card flip' animation when the card is tapped
-- [x] User sees a celebration animation with confetti when they answer a question correctly
